@@ -80,3 +80,10 @@ Constructor takes the Sample Rate as optional argument.
 ## 0.1.3
 
 * Updated README.
+
+
+## 0.1.4
+
+- Removed Debug output
+
+* Fixed casting issue

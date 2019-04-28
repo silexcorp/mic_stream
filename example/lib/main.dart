@@ -32,8 +32,7 @@ class _MyAppState extends State<MyApp> {
     if (!isRecording) {
 
       print("Start Streaming from the microphone...");
-      //stream = microphone(audioSource: AudioSource.DEFAULT, sampleRate: 44100, channelConfig: ChannelConfig.CHANNEL_IN_MONO, audioFormat: AudioFormat.ENCODING_PCM_16BIT);
-      stream = microphone();
+      stream = microphone(audioSource: AudioSource.DEFAULT, sampleRate: 16000, channelConfig: ChannelConfig.CHANNEL_IN_MONO, audioFormat: AudioFormat.ENCODING_PCM_16BIT);
       _updateButton();
 
       isRecording = true;
