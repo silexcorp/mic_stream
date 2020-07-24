@@ -36,6 +36,7 @@ const EventChannel _microphoneEventChannel =
     EventChannel('aaron.code.com/mic_stream');
 
 Permissions _permission;
+Microphone <List <int>> _microphone;
 
 // This function manages the permission and ensures you're allowed to record audio
 Future<bool> get permissionStatus async {
@@ -55,10 +56,12 @@ Stream<List<int>> microphone({
   ChannelConfig channelConfig: _DEFAULT_CHANNELS_CONFIG,
   AudioFormat audioFormat: _DEFAULT_AUDIO_FORMAT
 }) async* {
-  yield* Microphone <List <int>> (
-      audioSource: audioSource,
-      sampleRate: sampleRate,
-      channelConfig: channelConfig,
-      audioFormat: audioFormat
-  ).stream;
+  if (_microphone == null)
+    _microphone = Microphone(
+        audioSource: _DEFAULT_AUDIO_SOURCE,
+        sampleRate: _DEFAULT_SAMPLE_RATE,
+        channelConfig: _DEFAULT_CHANNELS_CONFIG,
+        audioFormat: _DEFAULT_AUDIO_FORMAT);
+
+  yield* _microphone.stream;
 }
